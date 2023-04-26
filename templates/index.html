@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/what.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Improved Survey Form</title>
+
+    <script>
+        function addAttachment() {
+            const attachmentsDiv = document.getElementById('attachments');
+            const newInput = document.createElement('input');
+            newInput.type = 'file';
+            newInput.name = 'attachment[]';
+            newInput.className = 'form-control-file mt-2';
+
+            attachmentsDiv.appendChild(newInput);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#addRow").click(function () {
+                let newRow = `<tr>
+                            <td><input type="text" class="form-control" name="nessus_plugin_id[]"></td>
+                            <td><input type="text" class="form-control" name="nessus_plugin_name[]"></td>
+                            <td><input type="text" class="form-control" name="latest_cve[]"></td>
+                          </tr>`;
+                $("#vulnerabilityTable tbody").append(newRow);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#addRowTwoColumn").click(function () {
+                var markup = "<tr><td><input type='text' class='form-control' name='fqdn[]'></td><td><input type='text' class='form-control' name='ip_address[]'></td></tr>";
+                $("#twoColumnTable tbody").append(markup);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#addRowTaskCompletion").click(function () {
+                var markup = "<tr><td><input type='text' class='form-control' name='milestone_task[]'></td><td><input type='date' class='form-control' name='planned_completion[]'></td><td><input type='text' class='form-control' name='poc_completing[]'></td></tr>";
+                $("#taskCompletionTable tbody").append(markup);
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<!--A requestor Information-->
+
+<body>
+    <div class="container">
+        <h1>GuideWell Source</h1>
+        <h3>Background</h3>
+        <p>
+            This form is intended to assist GuideWell Source in assessing risks associated with an exception to a
+            Guidewell Source or CMS vulnerability management requirement (i.e., patching that occurs outside of
+            documented remediation schedule requirements). To complete submission of this form, please e-mail it to
+            EVMPAdmins@bcbsfl.com AND GWSSecurityEVMPTeam@guidewellsource.com when all required fields (sections A, B, C
+            and D) are filled out.
+        </p>
+
+        <h3>Conditions</h3>
+        <p>
+            Submitting this Exception Request does not result in the automatic granting of the requested exception; GWS
+            EVMP Governance Board reviews each request and based on risk and business justification, a ruling will be
+            made.
+        </p>
+        <p>
+            Diversified Service Options, Inc. dba GuideWell Source ('GuideWell Source'), and its subsidiary and
+            affiliate companies are not responsible for errors or omissions in this message or its attachments
+            (hereinafter collectively 'communication'). Any personal comments made in this communication do not reflect
+            the views of GuideWell Source. The information contained in this communication may be privileged and/or
+            confidential and solely for the use of the intended recipient or protected from disclosure under applicable
+            law. If you are not the intended recipient or the individual responsible for delivering to the intended
+            recipient, please (1) be advised that any review, use, dissemination, forwarding, printing or copying of
+            this communication IS STRICTLY PROHIBITED; (2) notify sender immediately by telephone and (3) permanently
+            delete or destroy this communication. THANK YOU.
+        </p>
+
+
+        <form method="POST" action="{{ url_for('index') }}">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="date">Date of Submission</label>
+                    <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="name">Business Owner</label>
+                    <input type="text" class="form-control" id="name" name="name" requried>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Department/Cost Center</label>
+                <input type="text" class="form-control" id="name" name="name" requried>
+            </div>
+            <div class="form-group">
+                <label for="name">Requestor Name/RACF</label>
+                <input type="text" class="form-control" id="name" name="name" requried>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Requester Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone/Extension</label>
+                    <input type="text" class="form-control" id="phone" name="phone" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Manager Name/Racf</label>
+                <input type="text" class="form-control" id="name" name="name" requried>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Manager Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone/Extension</label>
+                    <input type="text" class="form-control" id="phone" name="phone" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Director Name/RACF</label>
+                <input type="text" class="form-control" id="name" name="name" requried>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Director Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone/Extension</label>
+                    <input type="text" class="form-control" id="phone" name="phone" required>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Attachments section -->
+                <h5>Include Manager and Director approval as attachments:</h5>
+                <div class="form-group">
+                    <label for="attachments">Attachments:</label>
+                    <div id="attachments">
+                        <input type="file" class="form-control-file" name="attachment[]">
+                    </div>
+                    <button type="button" class="btn btn-secondary mt-2" onclick="addAttachment()">Add another
+                        attachment</button>
+                </div>
+
+                <!-- Rest of the form content goes here -->
+            </div>
+            <!-- Environment selection -->
+            <h5>Select Environment:</h5>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="FCSO" name="FCSO">
+                    <label class="form-check-label" for="FCSO">FCSO (.NET, .CORP, .ICM, EXTGOV)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="NSM" name="NSM">
+                    <label class="form-check-label" for="NSM">NSM (BsB, BsG)</label>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <h5>Select MAC Environment:</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="FCSO" name="FCSO">
+                    <label class="form-check-label" for="FCSO">MAC: FSCO</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="NSM" name="NSM">
+                    <label class="form-check-label" for="NSM">MAC: NOVITAS</label>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <h5>Vulnerability Information:</h5>
+                <table class="table" id="vulnerabilityTable">
+                    <thead>
+                        <tr>
+                            <th>Nessus Plugin ID</th>
+                            <th>Nessus Plugin Name</th>
+                            <th>Latest CVE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="form-control" name="nessus_plugin_id[]"></td>
+                            <td><input type="text" class="form-control" name="nessus_plugin_name[]"></td>
+                            <td><input type="text" class="form-control" name="latest_cve[]"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button type="button" class="btn btn-primary mb-3" id="addRow">Add Row</button>
+            <!-- Discovery Date -->
+            <div class="form-group col-md-6">
+                <label for="date">Date Vulnerability First Seen (Discovery Date):</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <!-- CVE Severity Level -->
+            <h5>CVE Severity Level:</h5>
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="critical" name="critical">
+                    <label class="custom-control-label text-danger" for="critical">Critical</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="high" name="high">
+                    <label class="custom-control-label text-warning" for="high">High</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="moderate" name="moderate">
+                    <label class="custom-control-label text-warning" for="moderate">Moderate</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="low" name="low">
+                    <label class="custom-control-label text-primary" for="low">Low</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="non_security" name="non_security">
+                    <label class="custom-control-label text-dark" for="non_security">Non-Security</label>
+                </div>
+            </div>
+    </div>
+    <div class="container">
+        <table class="table" id="twoColumnTable">
+            <thead>
+                <tr>
+                    <th>Fully Qualified Domain Name (FQDN)</th>
+                    <th>IP Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" name="fqdn[]"></td>
+                    <td><input type="text" class="form-control" name="ip_address[]"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="addRowTwoColumn">Add Row</button>
+    </div>
+    <div class="container">
+        <!-- Request Detail -->
+        <div class="form-group mt-4">
+            <label for="risks">Request Detail:</label>
+            <textarea class="form-control" id="risks" name="risks" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Root Cause Analysis (RCA) Categories (Select one of these categories):</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="reasons[]" id="reason1"
+                    value="Vendor cannot support or no patches are available">
+                <label class="form-check-label" for="reason1">Vendor cannot support or no patches are available</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="reasons[]" id="reason2"
+                    value="Vendor product or upgrade purchase/procurement required causing delay">
+                <label class="form-check-label" for="reason2">Vendor product or upgrade purchase/procurement required
+                    causing delay</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="reasons[]" id="reason3"
+                    value="Internal technical limitation/constraint due to technical incompatibility">
+                <label class="form-check-label" for="reason3">Internal technical limitation/constraint due to technical
+                    incompatibility</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="reasons[]" id="reason4"
+                    value="Internal Business limitation/constraint due to adverse operational impact">
+                <label class="form-check-label" for="reason4">Internal Business limitation/constraint due to adverse
+                    operational impact</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="reasons[]" id="reason5"
+                    value="Vendor Confirmed False positive">
+                <label class="form-check-label" for="reason5">Vendor Confirmed False positive</label>
+            </div>
+        </div>
+
+        <!-- Business Justification -->
+        <div class="form-group mt-4">
+            <label for="businessJustification">Business Justification:</label>
+            <textarea class="form-control" id="businessJustification" name="businessJustification" rows="3"></textarea>
+        </div>
+    </div>
+
+    <hr>
+    <div class="container">
+        <!-- Risks Presented as a Result of Non-Compliance -->
+        <div class="form-group mt-4">
+            <label for="risks">Risks Presented as a Result of Non-Compliance:</label>
+            <textarea class="form-control" id="risks" name="risks" rows="3"></textarea>
+        </div>
+        <!-- Mitigating/Compensating Controls -->
+        <div class="form-group mt-4">
+            <label for="mitigatingControls">Mitigating/Compensating Controls:</label>
+            <textarea class="form-control" id="mitigatingControls" name="mitigatingControls" rows="3"></textarea>
+        </div>
+
+        <!-- Date Compliance Will Be Met -->
+        <div class="form-group col-md-6">
+            <label for="complianceDate">Date Compliance Will Be Met:</label>
+            <input type="date" class="form-control" id="complianceDate" name="complianceDate" required>
+        </div>
+
+        <!-- Resources Required -->
+        <div class="form-group col-md-6">
+            <label for="resourcesRequired">Resources Required:</label>
+            <input type="text" class="form-control" id="resourcesRequired" name="resourcesRequired" required>
+        </div>
+
+        <p>Note: if remediation date exceeds 90 days from <b>Date First Seen (Discovery Date) of Vulnerability,</b> you
+            may be contacted to provide additional justification and/or documentation.</p>
+
+        <!-- Milestones Table -->
+        <div class="container">
+            <table class="table" id="taskCompletionTable">
+                <thead>
+                    <tr>
+                        <th>Milestone or Task Completion</th>
+                        <th>Date of Planned Completion</th>
+                        <th>POC Completing the Task</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" name="milestone_task[]"></td>
+                        <td><input type="date" class="form-control" name="planned_completion[]"></td>
+                        <td><input type="text" class="form-control" name="poc_completing[]"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" id="addRowTaskCompletion">Add Row</button>
+        </div>
+
+        <div class="mt-3 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <!-- Optional JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn
