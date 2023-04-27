@@ -3,7 +3,7 @@ body {
     background-color: #f8f9fa;
 }
 
-css Copy code .container {
+.container {
     max-width: 600px;
     margin: 30px auto;
     background-color: white;
@@ -28,7 +28,8 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="date"],
-select {
+select,
+textarea {
     border: 1px solid #ced4da;
     border-radius: 4px;
     padding: 7px 12px;
@@ -40,10 +41,27 @@ select {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="date"]:focus,
-select:focus {
+select:focus,
+textarea:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0px 0px 2px rgba(0, 123, 255, 0.25);
+}
+
+input[type="text"]:invalid,
+input[type="email"]:invalid,
+input[type="date"]:invalid,
+select:invalid,
+textarea:invalid {
+    border-color: #dc3545;
+}
+
+input[type="text"]:valid,
+input[type="email"]:valid,
+input[type="date"]:valid,
+select:valid,
+textarea:valid {
+    border-color: #28a745;
 }
 
 button {
@@ -70,29 +88,4 @@ button:hover {
     height: 1.25rem;
     background-color: transparent;
     border: 1px solid #adb5bd;
-}
-
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    border-color: #adb5bd;
-    background-color: transparent;
-}
-
-.custom-control-input:checked~.custom-control-label.red::before {
-    background-color: red;
-}
-
-.custom-control-input:checked~.custom-control-label.orange::before {
-    background-color: orange;
-}
-
-.custom-control-input:checked~.custom-control-label.yellow::before {
-    background-color: yellow;
-}
-
-.custom-control-input:checked~.custom-control-label.blue::before {
-    background-color: blue;
-}
-
-.custom-control-input:checked~.custom-control-label.black::before {
-    background-color: black;
 }

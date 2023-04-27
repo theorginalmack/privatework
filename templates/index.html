@@ -25,7 +25,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        // Your custom script
         $(document).ready(function () {
             $("#addRow").click(function () {
                 let newRow = `<tr>
@@ -95,56 +97,55 @@
                     <input type="date" class="form-control" id="date" name="date" required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="name">Business Owner</label>
-                    <input type="text" class="form-control" id="name" name="name" requried>
+                    <label for="business_owner">Business Owner</label>
+                    <input type="text" class="form-control" id="business_owner" name="business_owner" required>
                 </div>
             </div>
             <div class="form-group">
-                <label for="name">Department/Cost Center</label>
-                <input type="text" class="form-control" id="name" name="name" requried>
+                <label for="department">Department/Cost Center</label>
+                <input type="text" class="form-control" id="department" name="department" required>
             </div>
             <div class="form-group">
-                <label for="name">Requestor Name/RACF</label>
-                <input type="text" class="form-control" id="name" name="name" requried>
+                <label for="requestor_name">Requestor Name/RACF</label>
+                <input type="text" class="form-control" id="requestor_name" name="requestor_name" required>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="email">Requester Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <label for="requestor_email">Requester Email</label>
+                    <input type="email" class="form-control" id="requestor_email" name="requestor_email" required>
+                </div>
+                <div class="form-group">
+                    <label for="requestor_phone">Phone/Extension</label>
+                    <input type="text" class="form-control" id="requestor_phone" name="requestor_phone" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="manager_name">Manager Name/Racf</label>
+                <input type="text" class="form-control" id="manager_name" name="manager_name" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="manager_email">Manager Email</label>
+                    <input type="email" class="form-control" id="manager_email" name="manager_email" required>
+                </div>
+                <div class="form-group">
+                    <label for="manager_phone">Phone/Extension</label>
+                    <input type="text" class="form-control" id="manager_phone" name="manager_phone" required>
+                </div>
+            </div>
 
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone/Extension</label>
-                    <input type="text" class="form-control" id="phone" name="phone" required>
-                </div>
-            </div>
             <div class="form-group">
-                <label for="name">Manager Name/Racf</label>
-                <input type="text" class="form-control" id="name" name="name" requried>
+                <label for="director_name">Director Name/RACF</label>
+                <input type="text" class="form-control" id="director_name" name="director_name" required>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="email">Manager Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <label for="director_email">Director Email</label>
+                    <input type="email" class="form-control" id="director_email" name="director_email" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone/Extension</label>
-                    <input type="text" class="form-control" id="phone" name="phone" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="name">Director Name/RACF</label>
-                <input type="text" class="form-control" id="name" name="name" requried>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="email">Director Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone/Extension</label>
-                    <input type="text" class="form-control" id="phone" name="phone" required>
+                    <label for="director_phone">Phone/Extension</label>
+                    <input type="text" class="form-control" id="director_phone" name="director_phone" required>
                 </div>
             </div>
 
@@ -152,19 +153,22 @@
                 <!-- Attachments section -->
                 <h5>Include Manager and Director approval as attachments:</h5>
                 <div class="form-group">
-                    <label for="attachments">Attachments:</label>
+                    <label for="attachments">Attachments:</label> <!-- Close the label tag here -->
                     <div id="attachments">
                         <input type="file" class="form-control-file" name="attachment[]">
                     </div>
                     <button type="button" class="btn btn-secondary mt-2" onclick="addAttachment()">Add another
                         attachment</button>
                 </div>
-
-                <!-- Rest of the form content goes here -->
             </div>
-            <!-- Environment selection -->
-            <h5>Select Environment:</h5>
-            <div class="form-group">
+
+            <!-- Rest of the form content goes here -->
+    </div>
+    <!-- Environment selection -->
+    <div class="container">
+        <h5>Select Environment:</h5>
+        <div class="row">
+            <div class="col-md-6">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="FCSO" name="FCSO">
                     <label class="form-check-label" for="FCSO">FCSO (.NET, .CORP, .ICM, EXTGOV)</label>
@@ -174,8 +178,7 @@
                     <label class="form-check-label" for="NSM">NSM (BsB, BsG)</label>
                 </div>
             </div>
-            <hr>
-            <div class="form-group">
+            <div class="col-md-6">
                 <h5>Select MAC Environment:</h5>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="FCSO" name="FCSO">
@@ -186,172 +189,181 @@
                     <label class="form-check-label" for="NSM">MAC: NOVITAS</label>
                 </div>
             </div>
-
-            <div class="table-responsive">
-                <h5>Vulnerability Information:</h5>
-                <table class="table" id="vulnerabilityTable">
-                    <thead>
-                        <tr>
-                            <th>Nessus Plugin ID</th>
-                            <th>Nessus Plugin Name</th>
-                            <th>Latest CVE</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" class="form-control" name="nessus_plugin_id[]"></td>
-                            <td><input type="text" class="form-control" name="nessus_plugin_name[]"></td>
-                            <td><input type="text" class="form-control" name="latest_cve[]"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <button type="button" class="btn btn-primary mb-3" id="addRow">Add Row</button>
-            <!-- Discovery Date -->
-            <div class="form-group col-md-6">
-                <label for="date">Date Vulnerability First Seen (Discovery Date):</label>
-                <input type="date" class="form-control" id="date" name="date" required>
-            </div>
-            <!-- CVE Severity Level -->
-            <h5>CVE Severity Level:</h5>
-            <div class="form-group">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="critical" name="critical">
-                    <label class="custom-control-label text-danger" for="critical">Critical</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="high" name="high">
-                    <label class="custom-control-label text-warning" for="high">High</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="moderate" name="moderate">
-                    <label class="custom-control-label text-warning" for="moderate">Moderate</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="low" name="low">
-                    <label class="custom-control-label text-primary" for="low">Low</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="non_security" name="non_security">
-                    <label class="custom-control-label text-dark" for="non_security">Non-Security</label>
-                </div>
-            </div>
-    </div>
-    <div class="container">
-        <table class="table" id="twoColumnTable">
-            <thead>
-                <tr>
-                    <th>Fully Qualified Domain Name (FQDN)</th>
-                    <th>IP Address</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input type="text" class="form-control" name="fqdn[]"></td>
-                    <td><input type="text" class="form-control" name="ip_address[]"></td>
-                </tr>
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-primary" id="addRowTwoColumn">Add Row</button>
-    </div>
-    <div class="container">
-        <!-- Request Detail -->
-        <div class="form-group mt-4">
-            <label for="risks">Request Detail:</label>
-            <textarea class="form-control" id="risks" name="risks" rows="3"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Root Cause Analysis (RCA) Categories (Select one of these categories):</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="reasons[]" id="reason1"
-                    value="Vendor cannot support or no patches are available">
-                <label class="form-check-label" for="reason1">Vendor cannot support or no patches are available</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="reasons[]" id="reason2"
-                    value="Vendor product or upgrade purchase/procurement required causing delay">
-                <label class="form-check-label" for="reason2">Vendor product or upgrade purchase/procurement required
-                    causing delay</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="reasons[]" id="reason3"
-                    value="Internal technical limitation/constraint due to technical incompatibility">
-                <label class="form-check-label" for="reason3">Internal technical limitation/constraint due to technical
-                    incompatibility</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="reasons[]" id="reason4"
-                    value="Internal Business limitation/constraint due to adverse operational impact">
-                <label class="form-check-label" for="reason4">Internal Business limitation/constraint due to adverse
-                    operational impact</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="reasons[]" id="reason5"
-                    value="Vendor Confirmed False positive">
-                <label class="form-check-label" for="reason5">Vendor Confirmed False positive</label>
-            </div>
-        </div>
-
-        <!-- Business Justification -->
-        <div class="form-group mt-4">
-            <label for="businessJustification">Business Justification:</label>
-            <textarea class="form-control" id="businessJustification" name="businessJustification" rows="3"></textarea>
         </div>
     </div>
-
     <hr>
+    <!-- Vulnerability Information -->
     <div class="container">
-        <!-- Risks Presented as a Result of Non-Compliance -->
-        <div class="form-group mt-4">
-            <label for="risks">Risks Presented as a Result of Non-Compliance:</label>
-            <textarea class="form-control" id="risks" name="risks" rows="3"></textarea>
-        </div>
-        <!-- Mitigating/Compensating Controls -->
-        <div class="form-group mt-4">
-            <label for="mitigatingControls">Mitigating/Compensating Controls:</label>
-            <textarea class="form-control" id="mitigatingControls" name="mitigatingControls" rows="3"></textarea>
-        </div>
-
-        <!-- Date Compliance Will Be Met -->
-        <div class="form-group col-md-6">
-            <label for="complianceDate">Date Compliance Will Be Met:</label>
-            <input type="date" class="form-control" id="complianceDate" name="complianceDate" required>
-        </div>
-
-        <!-- Resources Required -->
-        <div class="form-group col-md-6">
-            <label for="resourcesRequired">Resources Required:</label>
-            <input type="text" class="form-control" id="resourcesRequired" name="resourcesRequired" required>
-        </div>
-
-        <p>Note: if remediation date exceeds 90 days from <b>Date First Seen (Discovery Date) of Vulnerability,</b> you
-            may be contacted to provide additional justification and/or documentation.</p>
-
-        <!-- Milestones Table -->
-        <div class="container">
-            <table class="table" id="taskCompletionTable">
+        <h5>Vulnerability Information:</h5>
+        <div class="table-responsive">
+            <table class="table" id="vulnerabilityTable">
                 <thead>
                     <tr>
-                        <th>Milestone or Task Completion</th>
-                        <th>Date of Planned Completion</th>
-                        <th>POC Completing the Task</th>
+                        <th>Nessus Plugin ID</th>
+                        <th>Nessus Plugin Name</th>
+                        <th>Latest CVE</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text" class="form-control" name="milestone_task[]"></td>
-                        <td><input type="date" class="form-control" name="planned_completion[]"></td>
-                        <td><input type="text" class="form-control" name="poc_completing[]"></td>
+                        <td><input type="text" class="form-control" name="nessus_plugin_id[]"></td>
+                        <td><input type="text" class="form-control" name="nessus_plugin_name[]"></td>
+                        <td><input type="text" class="form-control" name="latest_cve[]"></td>
                     </tr>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-primary" id="addRowTaskCompletion">Add Row</button>
+        </div>
+        <button type="button" class="btn btn-primary mb-3" id="addRow">Add Row</button>
+    </div>
+    <!-- Discovery Date -->
+    <div class="container">
+        <label for="date">Date Vulnerability First Seen (Discovery Date):</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+    <!-- CVE Severity Level -->
+    <div class="container">
+        <h5>CVE Severity Level:</h5>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="critical" name="critical">
+            <label class="custom-control-label text-danger" for="critical">Critical</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="high" name="high">
+            <label class="custom-control-label text-warning" for="high">High</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="moderate" name="moderate">
+            <label class="custom-control-label text-warning" for="moderate">Moderate</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="low" name="low">
+            <label class="custom-control-label text-primary" for="low">Low</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="non_security" name="non_security">
+            <label class="custom-control-label text-dark" for="non_security">Non-Security</label>
         </div>
 
-        <div class="mt-3 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="container">
+            <table class="table" id="twoColumnTable">
+                <thead>
+                    <tr>
+                        <th>Fully Qualified Domain Name (FQDN)</th>
+                        <th>IP Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" name="fqdn[]"></td>
+                        <td><input type="text" class="form-control" name="ip_address[]"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" id="addRowTwoColumn">Add Row</button>
         </div>
-        <!-- Optional JavaScript -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn
+        <div class="container">
+            <!-- Request Detail -->
+            <div class="form-group mt-4">
+                <label for="risks">Request Detail:</label>
+                <textarea class="form-control" id="risks" name="risks" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Root Cause Analysis (RCA) Categories (Select one of these categories):</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="reasons[]" id="reason1"
+                        value="Vendor cannot support or no patches are available">
+                    <label class="form-check-label" for="reason1">Vendor cannot support or no patches are
+                        available</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="reasons[]" id="reason2"
+                        value="Vendor product or upgrade purchase/procurement required causing delay">
+                    <label class="form-check-label" for="reason2">Vendor product or upgrade purchase/procurement
+                        required
+                        causing delay</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="reasons[]" id="reason3"
+                        value="Internal technical limitation/constraint due to technical incompatibility">
+                    <label class="form-check-label" for="reason3">Internal technical limitation/constraint due to
+                        technical
+                        incompatibility</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="reasons[]" id="reason4"
+                        value="Internal Business limitation/constraint due to adverse operational impact">
+                    <label class="form-check-label" for="reason4">Internal Business limitation/constraint due to adverse
+                        operational impact</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="reasons[]" id="reason5"
+                        value="Vendor Confirmed False positive">
+                    <label class="form-check-label" for="reason5">Vendor Confirmed False positive</label>
+                </div>
+            </div>
+
+            <!-- Business Justification -->
+            <div class="form-group mt-4">
+                <label for="businessJustification">Business Justification:</label>
+                <textarea class="form-control" id="businessJustification" name="businessJustification"
+                    rows="3"></textarea>
+            </div>
+        </div>
+
+        <hr>
+        <div class="container">
+            <!-- Risks Presented as a Result of Non-Compliance -->
+            <div class="form-group mt-4">
+                <label for="risks">Risks Presented as a Result of Non-Compliance:</label>
+                <textarea class="form-control" id="risks" name="risks" rows="3"></textarea>
+            </div>
+            <!-- Mitigating/Compensating Controls -->
+            <div class="form-group mt-4">
+                <label for="mitigatingControls">Mitigating/Compensating Controls:</label>
+                <textarea class="form-control" id="mitigatingControls" name="mitigatingControls" rows="3"></textarea>
+            </div>
+
+            <!-- Date Compliance Will Be Met -->
+            <div class="form-group col-md-6">
+                <label for="complianceDate">Date Compliance Will Be Met:</label>
+                <input type="date" class="form-control" id="complianceDate" name="complianceDate" required>
+            </div>
+
+            <!-- Resources Required -->
+            <div class="form-group col-md-6">
+                <label for="resourcesRequired">Resources Required:</label>
+                <input type="text" class="form-control" id="resourcesRequired" name="resourcesRequired" required>
+            </div>
+
+            <p>Note: if remediation date exceeds 90 days from <b>Date First Seen (Discovery Date) of Vulnerability,</b>
+                you
+                may be contacted to provide additional justification and/or documentation.</p>
+
+            <!-- Milestones Table -->
+            <div class="container">
+                <table class="table" id="taskCompletionTable">
+                    <thead>
+                        <tr>
+                            <th>Milestone or Task Completion</th>
+                            <th>Date of Planned Completion</th>
+                            <th>POC Completing the Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="form-control" name="milestone_task[]"></td>
+                            <td><input type="date" class="form-control" name="planned_completion[]"></td>
+                            <td><input type="text" class="form-control" name="poc_completing[]"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-primary" id="addRowTaskCompletion">Add Row</button>
+            </div>
+
+            <div class="mt-3 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <!-- Optional JavaScript -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn"></script>
