@@ -1,0 +1,91 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #007bff;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 7px 12px;
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0px 0px 2px rgba(0, 123, 255, 0.25);
+}
+
+input[type="text"]:invalid,
+input[type="email"]:invalid,
+input[type="date"]:invalid,
+select:invalid,
+textarea:invalid {
+    border-color: #dc3545;
+}
+
+input[type="text"]:valid,
+input[type="email"]:valid,
+input[type="date"]:valid,
+select:valid,
+textarea:valid {
+    border-color: #28a745;
+}
+
+button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+    content: "";
+    position: absolute;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: transparent;
+    border: 1px solid #adb5bd;
+}
