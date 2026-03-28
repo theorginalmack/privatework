@@ -1,10 +1,10 @@
 terraform {
     cloud {
-        organization = "REPLACE_WITH_YOUR_ORGANIZATION_NAME"
+        organization = "Macksbusiness"
 
         workspaces {
-            name = "REPLACE_WITH_YOUR_WORKSPACE_NAME"
-            project = "REPLACE_WITH_YOUR_PROJECT_NAME"
+            name = "privatework"
+            project = "Default Project"
         }
     }
 }
